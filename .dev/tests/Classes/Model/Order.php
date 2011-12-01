@@ -267,6 +267,8 @@ class XLite_Tests_Model_Order extends XLite_Tests_Model_OrderAbstract
 
         $this->assertFalse($order->addItem($item), 'check add item #3');
         $this->assertEquals($order::NOT_VALID_ERROR, $order->getAddItemError(), 'check error text');
+        \XLite\Core\Database::getEM()->remove($order);
+        \XLite\Core\Database::getEM()->flush();
 	}
 
     public function testGetAddItemError()
@@ -317,7 +319,7 @@ class XLite_Tests_Model_Order extends XLite_Tests_Model_OrderAbstract
 
 		$order->addItem($item);
 
-        \XLite\Core\Database::getEM()->persist($order);
+       // \XLite\Core\Database::getEM()->persist($order);
         \XLite\Core\Database::getEM()->flush();
 
         $this->assertEquals(
@@ -362,7 +364,7 @@ class XLite_Tests_Model_Order extends XLite_Tests_Model_OrderAbstract
 
         $this->assertEquals(1, $order->getItems()->count(), 'check order items count #3');
 
-        \XLite\Core\Database::getEM()->persist($order);
+        //\XLite\Core\Database::getEM()->persist($order);
         \XLite\Core\Database::getEM()->flush();
 
         $list = \XLite\Core\Database::getRepo('XLite\Model\Product')->findByEnabled(true);
@@ -382,7 +384,7 @@ class XLite_Tests_Model_Order extends XLite_Tests_Model_OrderAbstract
 
         $this->assertEquals(2, $order->getItems()->count(), 'check order items count #4');
 
-        \XLite\Core\Database::getEM()->persist($order);
+        //\XLite\Core\Database::getEM()->persist($order);
         \XLite\Core\Database::getEM()->flush();
 
         $order->normalizeItems();

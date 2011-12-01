@@ -104,9 +104,7 @@ class XLite_Tests_Model_Repo_Shipping_Markup extends XLite_Tests_Model_OrderAbst
     /**
      * getTestOrder
      *
-     * @param bool $profile Flag: if true, then get real profile from database
-     *
-     * @return void
+     * @return XLite\Model\Order
      * @access protected
      * @see    ____func_see____
      * @since  1.0.0

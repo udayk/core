@@ -40,6 +40,8 @@ abstract class XLite_Tests_Model_OrderAbstract extends XLite_Tests_TestCase
 
     protected function getTestOrder()
     {
+        if ($this->order)
+            return $this->order;
         \XLite\Core\Auth::getInstance()->logoff();
 
         $this->testOrder['date'] = time();
@@ -92,12 +94,7 @@ abstract class XLite_Tests_Model_OrderAbstract extends XLite_Tests_TestCase
     }
 
     protected function tearDown(){
-        if ($this->order)
-        {
-            $em = \Xlite\Core\Database::getEM();
-            $em->remove($this->order);
-            $em->flush();
-        }
+        $this->clearEntity($this->order);
         parent::tearDown();
     }
 

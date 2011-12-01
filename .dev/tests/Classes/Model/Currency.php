@@ -30,6 +30,8 @@
  *
  * @see   ____class_see____
  * @since 1.0.13
+ * @resource order
+ * @resource currency
  */
 class XLite_Tests_Model_Currency extends XLite_Tests_Model_OrderAbstract
 {

@@ -25,18 +25,9 @@
  * @since      1.0.0
  */
 
-class XLite_Tests_Model_Payment_TransactionData extends XLite_Tests_Model_OrderAbstract
+class XLite_Tests_Model_Payment_TransactionData extends XLite_Tests_Model_Payment_PaymentAbstract
 {
-    protected $testMethod = array(
-        'service_name' => 'test',
-        'class'        => 'Model\Payment\Processor\Offline',
-        'orderby'      => 100,
-        'enabled'      => false,
-        'name'         => 'Test',
-        'description'  => 'Description',
-    );
-
-    public function testCreate()
+       public function testCreate()
     {
         $order = $this->getTestOrder();
 
@@ -127,34 +118,9 @@ class XLite_Tests_Model_Payment_TransactionData extends XLite_Tests_Model_OrderA
         }
     }
 
-    protected function getTestMethod()
-    {
-        $method = new \XLite\Model\Payment\Method();
-
-        $method->map($this->testMethod);
-
-        $s = new \XLite\Model\Payment\MethodSetting();
-
-        $s->setName('t1');
-        $s->setValue('1');
-
-        $method->addSettings($s);
-        $s->setPaymentMethod($method);
-
-        $s = new \XLite\Model\Payment\MethodSetting();
-
-        $s->setName('t2');
-        $s->setValue('2');
-
-        $method->addSettings($s);
-        $s->setPaymentMethod($method);
-
-        \XLite\Core\Database::getEM()->persist($method);
-        \XLite\Core\Database::getEM()->flush();
-
-        return $method;
-    }
-
+    /**
+     * @return XLite\Model\Order
+     */
     protected function getTestOrder()
     {
         $order = parent::getTestOrder();

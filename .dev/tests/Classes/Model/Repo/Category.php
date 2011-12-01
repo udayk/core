@@ -45,7 +45,7 @@ class XLite_Tests_Model_Repo_Category extends XLite_Tests_TestCase
         parent::tearDown();
 
         // Not needed right now
-        // $this->doRestoreDb();
+        $this->doRestoreDb();
     }
 
     public function testDump()
