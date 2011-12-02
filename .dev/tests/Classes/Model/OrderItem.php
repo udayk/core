@@ -232,9 +232,7 @@ class XLite_Tests_Model_OrderItem extends XLite_Tests_Model_OrderAbstract
     public function testGetImageURL()
     {
         $order = $this->getTestOrder();
-
         $item = $order->getItems()->get(0);
-
         $this->assertEquals(
             $this->getProduct()->getImage()->getURL(),
             $item->getImageURL(),
@@ -258,8 +256,8 @@ class XLite_Tests_Model_OrderItem extends XLite_Tests_Model_OrderAbstract
 
     public function testGetDescription()
     {
+        echo "!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!";
         $order = $this->getTestOrder();
-
         $item = $order->getItems()->get(0);
 
         $this->assertEquals(

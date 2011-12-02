@@ -74,6 +74,7 @@ class XLite_Tests_Model_Inventory extends XLite_Tests_TestCase
     protected function getProductWithInventory(){
         $this->productWithInventory->getInventory()->setEnabled(true);
         $this->productWithInventory->getInventory()->setAmount(self::DEFAULT_INVENTORY_AMOUNT);
+        return $this->productWithInventory;
     }
     /**
      * @return XLite\Model\Product
@@ -81,6 +82,7 @@ class XLite_Tests_Model_Inventory extends XLite_Tests_TestCase
     protected function getProductWithoutInventory(){
         $this->productWithoutInventory->getInventory()->setEnabled(false);
         $this->productWithoutInventory->getInventory()->setAmount(self::DEFAULT_INVENTORY_AMOUNT);
+        return $this->productWithoutInventory;
     }
     /**
      * getProductWithInventoryAndLowLimit

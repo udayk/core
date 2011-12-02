@@ -134,7 +134,7 @@ class XLite_Tests_Core_Auth extends XLite_Tests_TestCase
         $this->assertEquals(2, $result->getProfileId(), 'Test #8: checking profile_id');
 
         $profile->setPassword(self::$guest['password']);
-        \XLite\Core\Auth::getInstance()->setSecureHash();
+        \XLite\Core\Auth::getInstance()->setSecureHash('');
 
    }
 

@@ -64,7 +64,7 @@ class XLite_Tests_Model_Currency extends XLite_Tests_Model_OrderAbstract
      */
     public function testCreate()
     {
-        $c = $this->currency();
+        $c = $this->currency;
 
         $this->assertTrue(0 < $c->getCurrencyId(), 'check currency id');
 
@@ -103,7 +103,7 @@ class XLite_Tests_Model_Currency extends XLite_Tests_Model_OrderAbstract
     {
         \XLite\Core\Database::getEM()->clear();
 
-        $c = $this->currency();
+        $c = $this->currency;
 
         $c->setName('Test 2');
         $c->setCode('ZZZ');
@@ -128,7 +128,7 @@ class XLite_Tests_Model_Currency extends XLite_Tests_Model_OrderAbstract
      */
     public function testDelete()
     {
-        $c = $this->currency();
+        $c = $this->currency;
 
         $id = $c->getCurrencyId();
 
@@ -150,7 +150,7 @@ class XLite_Tests_Model_Currency extends XLite_Tests_Model_OrderAbstract
      */
     public function testRoundValue()
     {
-        $c = $this->currency();
+        $c = $this->currency;
 
         $this->assertEquals(2.555, $c->roundValue(2.5549), 'check round');
 
@@ -173,7 +173,7 @@ class XLite_Tests_Model_Currency extends XLite_Tests_Model_OrderAbstract
      */
     public function testRoundValueAsInteger()
     {
-        $c = $this->currency();
+        $c = $this->currency;
 
         $this->assertEquals(2555, $c->roundValueAsInteger(2.5549), 'check round');
 
@@ -196,7 +196,7 @@ class XLite_Tests_Model_Currency extends XLite_Tests_Model_OrderAbstract
      */
     public function testConvertIntegerToFloat()
     {
-        $c = $this->currency();
+        $c = $this->currency;
 
         $this->assertEquals(2.555, $c->convertIntegerToFloat(2555), 'check round');
 
@@ -219,7 +219,7 @@ class XLite_Tests_Model_Currency extends XLite_Tests_Model_OrderAbstract
      */
     public function testFormatValue()
     {
-        $c = $this->currency();
+        $c = $this->currency;
 
         $d = \XLite\Core\Config::getInstance()->General->decimal_delim;
         $t = \XLite\Core\Config::getInstance()->General->thousand_delim;
