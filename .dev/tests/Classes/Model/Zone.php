@@ -19,7 +19,7 @@ class XLite_Tests_Model_Zone extends XLite_Tests_TestCase
 {
     static function setUpBeforeClass(){
         parent::setUpBeforeClass();
-        parent::doRestoreDb();
+        xlite_restore_sql_from_backup();
     }
     protected $entityData = array(
         'zone_name'  => 'test name',

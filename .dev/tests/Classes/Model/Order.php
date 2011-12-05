@@ -148,8 +148,9 @@ class XLite_Tests_Model_Order extends XLite_Tests_Model_OrderAbstract
 
         \XLite\Core\Database::getEM()->clear();
 
-        $order = \XLite\Core\Database::getRepo('XLite\Model\Order')->find($order->getOrderId());
+        $this->order = \XLite\Core\Database::getRepo('XLite\Model\Order')->find($order->getOrderId());
 
+        $order = $this->order;
         $shippingCost = $order->getSurchargeSumByType('shipping');
 
         $this->assertEquals(2, $order->getItems()->get(0)->getAmount(), 'check quantity');
@@ -187,6 +188,7 @@ class XLite_Tests_Model_Order extends XLite_Tests_Model_OrderAbstract
 
         \XLite\Core\Database::getEM()->remove($order);
         \XLite\Core\Database::getEM()->flush();
+        $this->order = null;
 
         $order = \XLite\Core\Database::getRepo('XLite\Model\Order')
             ->find($id);

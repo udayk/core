@@ -138,6 +138,7 @@ class XLite_Tests_Model_Image_Product_Image extends XLite_Tests_TestCase
     }
     protected function tearDown(){
         $this->clearEntity($this->product);
+        $this->doRestoreDb();
         parent::tearDown();
     }
 }

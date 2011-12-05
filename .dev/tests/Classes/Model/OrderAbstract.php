@@ -95,6 +95,7 @@ abstract class XLite_Tests_Model_OrderAbstract extends XLite_Tests_TestCase
 
     protected function tearDown(){
         $this->clearEntity($this->order);
+        $this->order = null;
         parent::tearDown();
     }
 

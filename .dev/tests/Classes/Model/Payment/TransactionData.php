@@ -123,11 +123,14 @@ class XLite_Tests_Model_Payment_TransactionData extends XLite_Tests_Model_Paymen
      */
     protected function getTestOrder()
     {
-        $order = parent::getTestOrder();
+        parent::getTestOrder();
 
-        $order->setPaymentMethod($this->getTestMethod());
+        $this->order->setPaymentMethod($this->getTestMethod());
 
-        $t = $order->getPaymentTransactions()->get(0);
+        \XLite\Core\Database::getEM()->flush();
+        \XLite\Core\Database::getEM()->refresh($this->order);
+
+        $t = $this->order->getPaymentTransactions()->get(0);
 
         $r = new \XLite\Model\Payment\TransactionData();
 
@@ -149,6 +152,6 @@ class XLite_Tests_Model_Payment_TransactionData extends XLite_Tests_Model_Paymen
 
         \XLite\Core\Database::getEM()->flush();
 
-        return $order;
+        return $this->order;
     }
 }

@@ -627,10 +627,25 @@ abstract class XLite_Tests_TestCase extends PHPUnit_Framework_TestCase
     {
         if ($entity) {
             $em = \XLite\Core\Database::getEM();
-            if (!$em->contains($entity))
-                $em->merge($entity);
-            $em->remove($entity);
-            $em->flush();
+            $entityState = $em->getUnitOfWork()->getEntityState($entity, \Doctrine\ORM\UnitOfWork::STATE_NEW);
+            switch ($entityState) {
+                case \Doctrine\ORM\UnitOfWork::STATE_DETACHED:
+                    echo "detached";
+                    $entity = $em->merge($entity);
+                case \Doctrine\ORM\UnitOfWork::STATE_MANAGED:
+//                    $id = $em->getClassMetadata(get_class($entity))->getIdentifierValues($entity);
+//                    $entity = Xlite\Core\Database::getRepo(get_class($entity))->find($id);
+//                    if ($entity)
+//                        $em->remove($entity);
+                    $em->refresh($entity);
+                    $em->remove($entity);
+                    break;
+                case \Doctrine\ORM\UnitOfWork::STATE_NEW:
+                case \Doctrine\ORM\UnitOfWork::STATE_REMOVED:
+                default:
+                    $entity = null;
+                    break;
+            }
         }
     }
     // }}}

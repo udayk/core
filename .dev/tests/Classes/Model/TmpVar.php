@@ -108,7 +108,7 @@ class XLite_Tests_Model_TmpVar extends XLite_Tests_TestCase
         $c = \XLite\Core\Database::getRepo('XLite\Model\TmpVar')->find($id);
 
         $this->assertTrue(is_null($c), 'check entity');
-        \XLite\Core\Database::getEM()->remove($c);
+        //\XLite\Core\Database::getEM()->remove($c);
         \XLite\Core\Database::getEM()->flush();
     }
 
