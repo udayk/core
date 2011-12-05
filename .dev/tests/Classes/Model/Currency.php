@@ -26,7 +26,7 @@
  */
 
 /**
- * XLite_Tests_Model_Currency 
+ * XLite_Tests_Model_Currency
  *
  * @see   ____class_see____
  * @since 1.0.13
@@ -44,10 +44,10 @@ class XLite_Tests_Model_Currency extends XLite_Tests_Model_OrderAbstract
      */
     protected $testData = array(
         'currency_id' => 999,
-        'code'        => 'XXX',
-        'symbol'      => 'x',
-        'e'           => 3,
-        'name'        => 'Test',
+        'code' => 'XXX',
+        'symbol' => 'x',
+        'e' => 3,
+        'name' => 'Test',
     );
 
     /**
@@ -101,8 +101,6 @@ class XLite_Tests_Model_Currency extends XLite_Tests_Model_OrderAbstract
      */
     public function testUpdate()
     {
-        \XLite\Core\Database::getEM()->clear();
-
         $c = $this->currency;
 
         $c->setName('Test 2');
@@ -236,25 +234,21 @@ class XLite_Tests_Model_Currency extends XLite_Tests_Model_OrderAbstract
         $this->assertEquals('1' . $t . '003', $c->formatValue(1002.5549), 'check format #4');
     }
 
-    protected function setUp(){
+    protected function setUp()
+    {
         parent::setUp();
+        $c = \XLite\Core\Database::getRepo("XLite\Model\Currency")->find(999);
+        if ($c) {
+            \XLite\Core\Database::getEM()->remove($c);
+            \XLite\Core\Database::getEM()->flush();
+        }
         $this->currency = $this->getTestCurrency();
     }
+
     protected function tearDown()
     {
-        $list = \XLite\Core\Database::getEM()->createQueryBuilder()
-            ->select('c')
-            ->from('XLite\Model\Currency', 'c')
-            ->andWhere('c.code IN (:code1, :code2)')
-            ->setParameter('code1', 'XXX')
-            ->setParameter('code2', 'ZZZ')
-            ->getQuery()
-            ->getResult();
-
-        foreach ($list as $c) {
-            \XLite\Core\Database::getEM()->remove($c);
-        }
-        \XLite\Core\Database::getEM()->flush();
+        $this->clearEntity($this->order);
+        $this->clearEntity($this->currency);
         parent::tearDown();
     }
 

@@ -121,9 +121,9 @@ class XLite_Tests_Model_Payment_TransactionData extends XLite_Tests_Model_Paymen
     /**
      * @return XLite\Model\Order
      */
-    protected function getTestOrder()
+    protected function getTestOrder($new_order = false)
     {
-        parent::getTestOrder();
+        parent::getTestOrder($new_order);
 
         $this->order->setPaymentMethod($this->getTestMethod());
 

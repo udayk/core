@@ -71,9 +71,9 @@ class XLite_Tests_Model_Payment_PaymentAbstract extends XLite_Tests_Model_OrderA
     /**
     * @return XLite\Model\Order
     */
-    protected function getTestOrder()
+    protected function getTestOrder($new_order = false)
     {
-        $order = parent::getTestOrder();
+        $order = parent::getTestOrder($new_order);
 
         $order->setPaymentMethod($this->getTestMethod());
 
