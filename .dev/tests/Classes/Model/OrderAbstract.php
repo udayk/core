@@ -106,4 +106,8 @@ abstract class XLite_Tests_Model_OrderAbstract extends XLite_Tests_TestCase
         parent::tearDown();
     }
 
+    static function tearDownAfterClass(){
+        \XLite\Core\Database::getEM()->flush();
+    }
+
 }
