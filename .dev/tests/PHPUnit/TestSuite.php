@@ -24,7 +24,8 @@ final class XLite_Tests_TestSuite extends PHPUnit_Framework_TestSuite
     protected function tearDown()
     {
         if (ROOT_TEST_SUITE_NAME !== $this->name) {
-            //$this->restoreDBState();
+            if (strpos($this->name, "Web"))
+                $this->restoreDBState();
             $this->cleanUpCache();
         }
         else{
