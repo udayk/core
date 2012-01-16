@@ -5,23 +5,9 @@
 
     <target name="cc" depends="set-properties-cc,clean,prepare-git-cc,prepare-release-cc,prepare,tests-cc,php-documentor,analysis,comparison,create-build" />
 
-    <target name="set-properties" depends="set-properties-common">
-        <property name="mode" value="manual" />
-        <property name="root" location="${basedir}/../../.." />
-        <property name="buildDir" location="${root}/build" />
-        <property name="sourceDir" location="${root}" />
-        <property name="jmeterDir" location="${sourceDir}/.dev/lib/jmeter" />
-        <property name="srcDir" location="${sourceDir}/src" />
-        <property name="distrDir" location="${buildDir}/output" />
-        <property name="installDir" location="${buildDir}/src" />
-        <property name="label" value="manual" />
-        <property name="lcRoot" location="${installDir}" />
-        <property name="varRunClasses" value="${installDir}/var/run/classes" />
-    </target>
-
     <target name="set-properties-cc" depends="set-properties-common">
         <property name="mode" value="cc" />
-        <property name="root" location="${basedir}/../.." />
+        <property name="root" location="${basedir}/../../.." />
         <property name="buildDir" location="${root}/build" />
         <property name="sourceDir" location="${root}/source" />
         <property name="ec2Dir" location="${root}/.ec2" />
