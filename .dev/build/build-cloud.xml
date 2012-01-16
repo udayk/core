@@ -1,7 +1,7 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <project name="xlite" default="build" basedir=".">
 
-    <taskdef name="jmeter" classname="org.programmerplanet.ant.taskdefs.jmeter.JMeterTask" />
+    <taskdef name="jmeter" classname="org.programmerplanet.ant.taskdefs.jmeter.JMeterTask" classpath="/usr/share/jmeter/bin/ApacheJMeter.jar" />
 
     <target name="build" depends="set-properties,clean,prepare-git,prepare-release,prepare,phpunit-deployment,tests,php-documentor,analysis" />
 
