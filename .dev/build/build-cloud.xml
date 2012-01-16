@@ -7,7 +7,7 @@
 
     <target name="set-properties" depends="set-properties-common">
         <property name="mode" value="manual" />
-        <property name="root" location="${basedir}/../.." />
+        <property name="root" location="${basedir}/../../.." />
         <property name="buildDir" location="${root}/build" />
         <property name="sourceDir" location="${root}" />
         <property name="jmeterDir" location="${sourceDir}/.dev/lib/jmeter" />
@@ -43,7 +43,7 @@
     </target>
 
     <target name="clean">
-        <chmod dir="${installDir}/sites/default" perm="a+w" type="both" />
+        <chmod dir="${installDir}/sites/default" perm="a+w" type="both" failonerror="false"/>
         <delete dir="${buildDir}" />
         <mkdir dir="${buildDir}" />
         <mkdir dir="${buildDir}/logs" />
