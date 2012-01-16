@@ -62,24 +62,15 @@
 
     </target>
 
-    <target name="prepare-release">
-
-        <echo message="Run release builder" />
-        <exec executable="${sourceDir}/.dev/build/release/release.sh" dir="${buildDir}">
-            <arg line="-c -b ${label} -d ${distrDir} -t" />
-        </exec>
-
-    </target>
-
     <target name="prepare-release-cc">
 
         <echo message="Create revision tag" />
         <exec executable="git" dir="${sourceDir}">
             <arg line="tag -a -f ${buildTag} -m 'Night-build tag'" />
         </exec>
-
+        <echo message='DRUPAL_LOCAL_REPO="${drupalDir}"' file="${sourceDir}/.dev/build/release/config.local.sh" />
         <echo message="Run release builder" />
-        <exec executable="${sourceDir}/.dev/build/release/release.sh" dir="${buildDir}">
+        <exec executable="${sourceDir}/.dev/build/release/release.sh" dir="${buildDir}" failonerror="on">
             <arg line="-c -l -b ${label} -d ${distrDir} -t" />
         </exec>
 
