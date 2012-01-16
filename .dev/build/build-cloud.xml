@@ -9,7 +9,7 @@
         <property name="mode" value="cc" />
         <property name="root" location="${basedir}/../../.." />
         <property name="buildDir" location="${root}/build" />
-        <property name="sourceDir" location="${root}/source" />
+        <property name="sourceDir" location="${root}/xlite" />
         <property name="ec2Dir" location="${root}/.ec2" />
         <property name="drupalDir" location="${root}/xlite_cms" />
         <property name="lcConnectorDir" location="${drupalDir}/modules/lc_connector" />
@@ -36,15 +36,6 @@
         <mkdir dir="${buildDir}/api" />
         <mkdir dir="${buildDir}/reports" />
         <mkdir dir="${buildDir}/screenshots" />
-    </target>
-
-    <target name="prepare-git">
-
-        <echo message="Update LiteCommerce source" />
-        <exec executable="git" dir="${sourceDir}">
-            <arg value="pull" />
-        </exec>
-
     </target>
 
     <target name="prepare-git-cc">
