@@ -1,13 +1,9 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<project name="xlite" default="build" basedir=".">
+<project name="xlite" default="cc" basedir=".">
 
     <taskdef name="jmeter" classname="org.programmerplanet.ant.taskdefs.jmeter.JMeterTask" classpath="/usr/share/jmeter/lib/ext/ant-jmeter-1.1.1.jar" />
 
-    <target name="build" depends="set-properties,clean,prepare-git,prepare-release,prepare,phpunit-deployment,tests,php-documentor,analysis" />
-
     <target name="cc" depends="set-properties-cc,clean,prepare-git-cc,prepare-release-cc,prepare,tests-cc,php-documentor,analysis,comparison,create-build" />
-
-    <target name="pure-build" depends="set-properties,clean,prepare,php-documentor,create-build" />
 
     <target name="set-properties" depends="set-properties-common">
         <property name="mode" value="manual" />
@@ -25,14 +21,14 @@
 
     <target name="set-properties-cc" depends="set-properties-common">
         <property name="mode" value="cc" />
-        <property name="root" location="${basedir}" />
+        <property name="root" location="${basedir}/../.." />
         <property name="buildDir" location="${root}/build" />
         <property name="sourceDir" location="${root}/source" />
         <property name="ec2Dir" location="${root}/.ec2" />
         <property name="drupalDir" location="${root}/xlite_cms" />
         <property name="lcConnectorDir" location="${drupalDir}/modules/lc_connector" />
         <property name="lc3CleanDir" location="${drupalDir}/sites/all/themes/lc3_clean" />
-        <property name="jmeterDir" location="/u/xcart/jakarta-jmeter-2.3.4" />
+        <property name="jmeterDir" location="/usr/share/jmeter" />
         <property name="srcDir" location="${sourceDir}/src" />
         <property name="distrDir" location="${buildDir}/output" />
         <property name="installDir" location="${buildDir}/src" />
@@ -44,7 +40,6 @@
     <target name="set-properties-common">
         <property name="version" value="3.x-dev" />
         <property name="apiUrl" value="http://xcart2-530.crtdev.local/~max/xlite/build/api" />
-        <property name="php53" value="/usr/local/php-530/bin/php" />
     </target>
 
     <target name="clean">
@@ -179,23 +174,23 @@
             <arg value="admin" />
         </exec>
         <!-- Rebuild cache: first pass -->
-        <exec executable="${php53}" dir="${installDir}">
+        <exec executable="php" dir="${installDir}">
             <arg value="${installDir}/modules/lc_connector/litecommerce/cart.php" />
         </exec>
         <!-- Rebuild cache: second pass -->
-        <exec executable="${php53}" dir="${installDir}">
+        <exec executable="php" dir="${installDir}">
             <arg value="${installDir}/modules/lc_connector/litecommerce/cart.php" />
         </exec>
         <!-- Rebuild cache: third pass -->
-        <exec executable="${php53}" dir="${installDir}">
+        <exec executable="php" dir="${installDir}">
             <arg value="${installDir}/modules/lc_connector/litecommerce/cart.php" />
         </exec>
         <!-- Rebuild cache: fourth pass -->
-        <exec executable="${php53}" dir="${installDir}">
+        <exec executable="php" dir="${installDir}">
             <arg value="${installDir}/modules/lc_connector/litecommerce/cart.php" />
         </exec>
         <!-- Rebuild cache: fifth pass -->
-        <exec executable="${php53}" dir="${installDir}">
+        <exec executable="php" dir="${installDir}">
             <arg value="${installDir}/modules/lc_connector/litecommerce/cart.php" />
         </exec>
     </target>
