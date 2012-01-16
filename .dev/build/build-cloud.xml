@@ -36,6 +36,7 @@
         <mkdir dir="${buildDir}/api" />
         <mkdir dir="${buildDir}/reports" />
         <mkdir dir="${buildDir}/screenshots" />
+        <mkdir dir="${distrDir}" />
     </target>
 
     <target name="prepare-git-cc">
@@ -72,7 +73,7 @@
         <chmod dir="${distrDir}" perm="a+w" type="both" />
         <echo message="Run release builder" />
         <exec executable="${sourceDir}/.dev/build/release/release.sh" dir="${buildDir}" failonerror="on">
-            <arg line="-c -l -b ${label} -d ${distrDir} -t -o ${buildDir}" />
+            <arg line="-c -l -b ${label} -d ${distrDir} -t" />
         </exec>
 
     </target>
