@@ -88,7 +88,7 @@
     <target name="prepare">
 
         <echo message="Deploy built releases" />
-        <exec executable="/usr/bin/tar" dir="${buildDir}">
+        <exec executable="tar" dir="${buildDir}">
             <arg line="-xzf ${distrDir}/drupal-lc3-${version}-${label}-test.tgz" />
         </exec>
         <move file="${buildDir}/drupal" tofile="${installDir}" />
