@@ -69,6 +69,7 @@
             <arg line="tag -a -f ${buildTag} -m 'Night-build tag'" />
         </exec>
         <echo message='DRUPAL_LOCAL_REPO="${drupalDir}"' file="${sourceDir}/.dev/build/release/config.local.sh" />
+        <chmod dir="${distDir}" perm="a+w" type="both" />
         <echo message="Run release builder" />
         <exec executable="${sourceDir}/.dev/build/release/release.sh" dir="${buildDir}" failonerror="on">
             <arg line="-c -l -b ${label} -d ${distrDir} -t" />
